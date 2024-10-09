@@ -22,5 +22,3 @@ factorial_de_dos()
 
 def perimetro ():
     return math.pi * 2
-
-    
