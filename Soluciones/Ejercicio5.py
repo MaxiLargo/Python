@@ -46,3 +46,17 @@ def elRango(numero:int)->str:
         res = "Mayor a 20"
     return res
 
+def tejubilasono(genero:str,edad:int):
+    res:str = ""
+    if genero == "F":
+        if edad>=60 or edad<=18:
+            res = "Anda de vacaciones"
+        else:
+            res = "Anda a trabajar"
+    if genero == "M":
+        if edad>=60 or edad <=18:
+            res = "Anda de vacaciones"
+        else:
+            res = "Anda a trabajar"
+    return res
+
