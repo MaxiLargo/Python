@@ -12,7 +12,7 @@ def pertenece1 (s:list,e:int)->bool:
             res = True
     return res
 
-
+#Mal
 def pertenece2 (s:list,e:int)->bool:
     res:bool = False
     while len(s) > 0:
@@ -22,6 +22,19 @@ def pertenece2 (s:list,e:int)->bool:
         else:
             s.remove(len(s))
     return res
+
+def pertenecev2 (s:list,e:int)->bool:
+    res:bool=False
+    i:int=0
+    while i < len(s):
+        if s[i] == e:
+            res = True
+        i+=1
+    return res
+
+print(pertenece([1,2,3,4,4,5,4,4,3],5))
+
+
 
 
 def divide_a_todos(s:list,e:int)->bool:
@@ -127,5 +140,64 @@ def hay3vocalesdistintas(palabra:str)->bool:
 print(hay3vocalesdistintas("Mamutuuuuui"))
 
 
-def secuenciamaslarga(s:list)->bool:
+#EJ2 eliminar repetidos
+
+def pertenece(s:str,c:chr)->str:
+    res:bool = False
+    if c in s:
+        res = True
+    return res
+
+print(pertenece("holaaa","a"))
+
+def eliminar_repetidos(s:str)->str:
+    res:str  = ""
+    for i in s:
+        if pertenece(s,i) and (not pertenece(res,i)):
+            res+=i
+    return res
+
+print(eliminar_repetidos("Hola"))
+
+
+def promedio(s:list[int])->float:
+    sumapromedio:int=0
+    for i in s:
+        sumapromedio = sumapromedio + i
     
+    promediofinal:float = sumapromedio/len(s)
+    
+    return promediofinal
+
+
+
+def resultadoMateria(notas:list[int])->int:
+    notasmayoresque4:bool = True
+    res:int= 0
+    for i in notas:
+        if i < 4:
+            notasmayoresque4 = False
+            res = 3
+    if promedio(notas) >=7 and notasmayoresque4:
+        res = 1
+    elif promedio(notas) >=4 or promedio(notas) < 7:
+        res = 2
+    else:
+        res = 3
+    return res
+
+
+def historialmovimientos(cuenta:list[tuple])->int:
+    res:int = 0
+
+    for (movimiento,dinero) in cuenta:
+        if movimiento == "I":
+            res=res+dinero
+        elif movimiento == "R":
+            res=res-dinero
+    return res
+
+print(historialmovimientos([("I",
+2000), ("R", 20),("R", 1000),("I", 300)]))
+        
+
