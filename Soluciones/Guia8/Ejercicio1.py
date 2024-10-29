@@ -27,3 +27,28 @@ p.put(2)
 p.put(3)
 p.put(4)
 print(cantidad_elementos(p))
+
+
+def maximo(m:list[int])->int:
+    x:int=m[0]
+    for i in m:
+        if i>x:
+            x=i
+    return x
+
+
+def buscar_el_maximo(p:Pila[int])->int:
+    paux:Pila[int] = Pila()
+    res:list[int]=[]
+    while not p.empty():
+        x=p.get()
+        res.append(x)
+        paux.put(x)
+    while not paux.empty():
+        p.put(paux.get())
+    
+    return maximo(res)
+
+print(buscar_el_maximo(p))
+
+            
