@@ -25,4 +25,5 @@ def cargasube():
             return res
 
 print(cargasube())
->>>>>>> 268a4a32330abb53b799e233ccfcf7021f67bdd8
+
+
