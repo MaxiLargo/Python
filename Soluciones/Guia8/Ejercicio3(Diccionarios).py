@@ -1,16 +1,16 @@
 from queue import LifoQueue as Pila
 
-def agrupar_por_longitud(nombre_archivo:str)->dict:
-    archivo=open(nombre_archivo,"r",encoding="utf-8")
-    res:dict={}
-    for linea in archivo:
-        if len(linea) in res.keys():
-            res[len(linea)]+=1
-        else:
-            res[len(linea)]=1
-    archivo.close()  # Cierra el archivo al finalizar
-    return res
-print(agrupar_por_longitud('C:\\Users\\Maxim\\Desktop\\PythonIP\\Python\\Soluciones\\Guia8\\hola.txt'))
+# def agrupar_por_longitud(nombre_archivo:str)->dict:
+#     archivo=open(nombre_archivo,"r",encoding="utf-8")
+#     res:dict={}
+#     for linea in archivo:
+#         if len(linea) in res.keys():
+#             res[len(linea)]+=1
+#         else:
+#             res[len(linea)]=1
+#     archivo.close()  # Cierra el archivo al finalizar
+#     return res
+# print(agrupar_por_longitud('C:\\Users\\Maxim\\Desktop\\PythonIP\\Python\\Soluciones\\Guia8\\hola.txt'))
 
 
 
@@ -51,26 +51,26 @@ promedios = calcular_promedio_por_estudiante(notas)
 print(promedios)
 
 
-def la_palabra_mas_frecuente(nombrearchivo:str)->str:
-    archivo=open(nombrearchivo,'r')
-    lineas=archivo.readlines()
-    diccionario:dict={}
-    for linea in lineas:
-        if linea not in diccionario:
-            diccionario[linea]=1
-        else:
-            diccionario[linea]+=1
-    archivo.close()
-    palabramaxima:int = 0
-    palabramasfrecuente:str=""
-    for palabra,frecuente in diccionario.items():
-        if palabramaxima<frecuente:
-            palabramaxima=frecuente
-            palabramasfrecuente=palabra
+# def la_palabra_mas_frecuente(nombrearchivo:str)->str:
+#     archivo=open(nombrearchivo,'r')
+#     lineas=archivo.readlines()
+#     diccionario:dict={}
+#     for linea in lineas:
+#         if linea not in diccionario:
+#             diccionario[linea]=1
+#         else:
+#             diccionario[linea]+=1
+#     archivo.close()
+#     palabramaxima:int = 0
+#     palabramasfrecuente:str=""
+#     for palabra,frecuente in diccionario.items():
+#         if palabramaxima<frecuente:
+#             palabramaxima=frecuente
+#             palabramasfrecuente=palabra
     
-    return palabramasfrecuente
+#     return palabramasfrecuente
 
-print(la_palabra_mas_frecuente('C:\\Users\\Maxim\\Desktop\\PythonIP\\Python\\Soluciones\\Guia8\\hola.txt'))
+# print(la_palabra_mas_frecuente('C:\\Users\\Maxim\\Desktop\\PythonIP\\Python\\Soluciones\\Guia8\\hola.txt'))
 
 
 
@@ -120,6 +120,36 @@ def agregar_producto(inventario:dict[str,dict[float,int]],nombre:str,precio:floa
 
     return inventario
 
+
+
+def actualizar_precios(inventario:dict[str,dict[float,int]],nombre:str,precio:float)->dict[str,dict[float,int]]:
+    for j,i in inventario.items():
+        if j == nombre:
+            for k in i.keys():
+                if k == "precio":
+                    i["precio"] = precio
+    return inventario
+
+def actualizar_stock(inventario:dict[str,dict[float,int]],nombre:str,cantidad:float):
+    for j,i in inventario.items():
+        if j == nombre:
+            for k in i.keys():
+                if k == "precio":
+                    i["cantidad"] = cantidad
+    return inventario
+
+def calcular_valor_inventario(inventario:dict[str,dict[float,int]])->float:
+    total:float=0.0
+    for j,i in inventario.items():
+        for x,y in i.items():
+            total=(i["precio"]*i["cantidad"]) + total
+    return total
+
 inventario = {}
 print(agregar_producto(inventario, "Camisa", 20.0, 50))
-print(agregar_producto(inventario, "Pantal ́on", 30.0, 30))
+print(agregar_producto(inventario, "Pantalon", 30.0, 30))
+print(actualizar_stock(inventario, "Camisa", 10))
+valor_total = calcular_valor_inventario(inventario)
+print("Valor total del inventario:", valor_total) 
+
+
