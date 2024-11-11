@@ -32,7 +32,7 @@ def calcular_promedio_por_estudiante(notas:list[tuple[str,float]])->dict[str,flo
     res:dict={}
 
     for estudiante,nota in notas:
-        if estudiante not in res:
+        if not estudiante in res:
             res[estudiante]=nota
         else:
             res[estudiante]=promedio(estudiante,notas)

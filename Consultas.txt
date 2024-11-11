@@ -1,0 +1,20 @@
+ Busqueda de valores en tuplas de esta pinta valorminimo:int = listatuplas[0][1] es legal?
+
+
+antes q esto confirmacion pava, cuando se recorre una lista no se modifica (a menos q sean pilas o colas)
+
+Recorrer de esta forma
+
+def da_vuelta_str(s:str)->str:
+    scopia:str = ""
+    scopia1:str = s
+    for i in range(len(s)-1,-1,-1):
+        scopia+=s[i]
+
+    return scopia
+
+print(da_vuelta_str("Hola"))
+
+for i in lista -> es valido?
+
+if e in lista -> es valido?

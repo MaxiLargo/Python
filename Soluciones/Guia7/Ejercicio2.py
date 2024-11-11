@@ -46,6 +46,6 @@ def da_vuelta_str(s:str)->str:
 
     return scopia
 
-print(da_vuelta_str("Holasexo"))
+print(da_vuelta_str("Hola"))
 
 
