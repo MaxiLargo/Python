@@ -114,3 +114,70 @@ print(filtrar_codigos_primos(codigos_barra))
 # asegura: {El segundo valor de la tupla en res[i], con i:Z, 0 <= i < |res| es igual a True <==> los últimos
 # 4 valores de la columna i de grilla_horaria son iguales entre sí}
 # }
+
+
+def transformada(x:list[list]):
+     res=[]
+     for i in range(len(x[0])):
+          resaux=[]
+          for j in range(len(x)):  # Recorremos filas (número de filas en x)
+               resaux.append(x[j][i])
+          res.append(resaux)
+     return res
+
+
+def sonlosmismosencargados(x:list[list]):
+     res=True
+     listaaux=transformada(x)
+     nombre=listaaux[0][0]
+     contador=0
+     for i in listaaux:
+          if contador<=4:
+               if nombre==i:
+                    contador+=1
+          else:
+               res = False
+     if contador == 4:
+          res=True
+     return res
+
+def un_responsable_por_turno(turnos:list[list[str]])->list[tuple[bool,bool]]:
+     lista=transformada(turnos)
+     contador=0
+     tupla:tuple=()
+     res:list=[]
+     for i in range(len(lista)):
+          for k in range((len(lista[i])//2)+1):
+               if lista[i][k] == lista[i][k+1]:
+                    contador+=1
+          if contador == 4:
+               tupla=(True,False)
+               res.append(tupla)
+               contador=0
+          else:
+               tupla=(False,False)
+               contador=0
+     for i in range(len(lista)):
+          for k in range((len(lista[i])//2)+1,len(lista[i])-1):
+               if lista[i][k] == lista[i][k+1]:
+                    contador+=1
+          if contador == 4:
+               res[i][1]=True
+               contador=0
+          else:
+               res[i][1]=(False)
+               contador=0
+
+     return res
+
+
+g1 = [["ana", "julio", "res", "bool"],
+      ["ana", "julio", "res", "bool"],
+      ["ana", "julio", "res", "bool"],
+      ["ana", "julio", "res", "bool"],
+      ["luki", "po", "kitty", "pika"],
+      ["luki", "po", "kitty", "pika"],
+      ["luki", "po", "kitty", "pika"],
+      ["luki", "po", "kitty", "pika"]]
+print(un_responsable_por_turno(g1))
+
